@@ -1,8 +1,18 @@
 require 'sinatra/base'
-require 'bkmks'
+require './lib/bkmks'
 
-class Bookmarks < Sinatra::base
+class BookmarkManager < Sinatra::Base
 
   get '/' do
+    @bookmarks = Bookmarks.all
     erb(:index)
   end
+
+get '/bookmarks' do
+  @bookmarks = Bookmarks.all
+    erb(:index)
+  end
+
+  run if app_file == $0
+
+end

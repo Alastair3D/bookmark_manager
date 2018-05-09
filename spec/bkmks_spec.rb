@@ -1,11 +1,11 @@
 require_relative '../lib/bkmks'
 
 describe Bookmarks do
-
-  context '#all' do
-    it 'Bookmarks responds to #all' do
-      bookmarks = Bookmarks.new
-      expect(bookmarks.initial_array).to respond_to(:all?)
+  describe '#all' do
+    it 'returns al bookmarks' do
+      bookmarks = Bookmarks.all
+      expect(bookmarks).to include("http://google.com")
+        expect(bookmarks).to include("http://facebook.com")
+        end
     end
-  end
 end
