@@ -1,10 +1,11 @@
+require 'pg'
+
 class Bookmarks
 
   def self.all
-    [
-      "http://google.com",
-      "http://facebook.com"
-    ]
+    connection = PG.connect(dbname: 'Alastair Edmonds')
+    result = connection.exec("SELECT * FROM bookmarks")
+    result.map { |bookmark| bookmark['url'] }
   end
 
 end
