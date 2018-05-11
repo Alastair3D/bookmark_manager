@@ -1,16 +1,24 @@
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require 'pg'
+
+require_relative './setup_test_database'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 Capybara.app = BookmarkManager
-ENV['RACK_ENV'] = 'test'
+ENV['ENVIRONMENT'] = 'test'
 
 RSpec.configure do |config|
-  config.after(:suite) do
+  config.before(:each) do
+      p "Setting up a database"
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+      connection.exec("TRUNCATE bookmarks;")
+    end
   end
-end
+
+
 
 #
 #
