@@ -19,4 +19,16 @@ describe Bookmarks do
         expect(Bookmarks.all).to eq expected_bookmarks
         end
     end
+
+describe '#add' do
+  it 'Adds a new bookmark' do
+    Bookmarks.add('http://google.com')
+    expected_bookmarks = [
+      'http://google.com'
+    ]
+    expect(Bookmarks.all).to eq expected_bookmarks
+    end
+  end
+
+
 end

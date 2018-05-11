@@ -19,7 +19,8 @@ end
 
 feature 'Adding a new bookmark' do
   scenario 'A user can add a url to bookmarks' do
-    visit('/bookmarks/new')
+    visit ('/bookmarks')
+    click_on "Add new bookmark"
     fill_in('url', with: 'http://testbookmark.com')
     click_button('Submit')
     expect(page).to have_content 'http://testbookmark.com'
